@@ -195,18 +195,19 @@ namespace SeriesAnalyzer
             }
             return choice;
         }
-        static void HandleUserChoice(char choice, List<int> inputSeries)
+        static void HandleUserChoice(char choice,ref List<int> inputSeries)
         {
             switch (choice)
             {
                 case 'a':
                     while (true)
-                    { inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputs(3))); }
-                    if (inputSeries.Count >= 3)
-                        break;
-                    else
-                        Console.WriteLine("No valid positive numbers were entered. Please try again.");
-
+                    {
+                        inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputs(3)));
+                        if (inputSeries.Count >= 3)
+                            break;
+                        else
+                            Console.WriteLine("No valid positive numbers were entered. Please try again.");
+                    }
                     break;
 
                 case 'b':
@@ -250,14 +251,54 @@ namespace SeriesAnalyzer
                     break;
             }
         }
+        static void startProgram(string[] args)
+        {
+            List<int> inputSeries = verifyPositiveNumbers(
+     verifyingReceiptOfNumbers(
+         getArguments(args)
+     )
+ );
 
 
+            if (inputSeries.Count < 3)
+
+                { 
+                while (true)
+                    {
+                inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputs(3)));
+                if (inputSeries.Count >= 3)
+
+                    break;
+                else
+                    Console.WriteLine("No valid positive numbers were entered. Please try again.");
+                        }
+                }
+
+
+
+
+            while (true)
+            {
+                displayMenu();
+                char choice = getValidatedMenuChoice();
+                HandleUserChoice(choice, ref inputSeries);
+                if (choice == 'j')
+                {
+                    Console.WriteLine("Exiting the program.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"You selected option '{choice}'.");
+                }
+                
+            }
+        }
 
         static void Main(string[] args)
         {
-            getArguments(args);
-            verifyingReceiptOfNumbers(getArguments(args));
-            verifyPositiveNumbers(verifyingReceiptOfNumbers(getArguments(args)));
+            startProgram(args);
+           
 
 
         }
