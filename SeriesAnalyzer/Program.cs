@@ -38,6 +38,45 @@ namespace SeriesAnalyzer
             }
             
         }
+        static void displaySeriesSorted(List<int> inputSeries)
+        {
+            Console.WriteLine("The series sorted is: ");
+            List<int> sortedList = inputSeries.OrderBy(x => x).ToList();
+            foreach (int i in sortedList)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        static void displaySeriesMax(List<int> inputSeries)
+        {
+            Console.WriteLine("The maximum number in the series is: ");
+            int max = inputSeries[0];
+            for  (int i = 1; i <= inputSeries.Count-1; i++ )
+            {
+                if (inputSeries[i] > max)
+                {
+                    max = inputSeries[i];
+                }
+            }
+                   Console.WriteLine(max);
+        }
+
+        static void displaySeriesMin(List<int> inputSeries)
+        {
+            Console.WriteLine("The minimum number in the series is: ");
+            int min = inputSeries[0];
+            for (int i = 1; i <= inputSeries.Count - 1; i++)
+            {
+             
+                if (inputSeries[i] < min)
+                {
+                    min = inputSeries[i];
+                }
+            }
+            Console.WriteLine(min);
+        }
+
+
 
         static List<int> clearNumberSeries(List<int> inputSeries)
         {
