@@ -131,14 +131,11 @@ namespace SeriesAnalyzer
                 foreach (string str in listring)
                 {
                     if (int.TryParse(str, out int number))
-                    {
-                        int newint = int.Parse(str);
-                        _listNumbers.Add(newint);
-                    }
+                        _listNumbers.Add(number);
                     else
                     {
                         Console.WriteLine($"The argument '{str}' is not a valid number.");
-                    }
+                }
             }
             return _listNumbers;
             }
@@ -178,6 +175,80 @@ namespace SeriesAnalyzer
             Console.WriteLine("i. Display the sum of the series");
             Console.WriteLine("j. Exit the program");
             Console.Write("Enter your choice (a–j): ");
+        }
+        static char getValidatedMenuChoice()
+        {
+            char choice;
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input.Length == 1 && char.IsLetter(input[0]) && "abcdefghij".Contains(char.ToLower(input[0])))
+
+                {
+                    choice = char.ToLower(input[0]);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a single letter (a–j).");
+                }
+            }
+            return choice;
+        }
+        static void HandleUserChoice(char choice, List<int> inputSeries)
+        {
+            switch (choice)
+            {
+                case 'a':
+                    while (true)
+                    { inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputs(3))); }
+                    if (inputSeries.Count >= 3)
+                        break;
+                    else
+                        Console.WriteLine("No valid positive numbers were entered. Please try again.");
+
+                    break;
+
+                case 'b':
+                    displaySeries(inputSeries);
+                    break;
+
+                case 'c':
+                    displaySeriesReversed(inputSeries);
+                    break;
+
+                case 'd':
+                    displaySeriesSorted(inputSeries);
+                    break;
+
+                case 'e':
+                    displaySeriesMax(inputSeries);
+                    break;
+
+                case 'f':
+                    displaySeriesMin(inputSeries);
+                    break;
+
+                case 'g':
+                    displaySeriesAverage(inputSeries);
+                    break;
+
+                case 'h':
+                    displaySeriesCount(inputSeries);
+                    break;
+
+                case 'i':
+                    displaySeriesSum(inputSeries);
+                    break;
+
+                case 'j':
+                    ExitProgram();
+                    break;
+
+                default:
+                    Console.WriteLine("Unknown option.");
+                    break;
+            }
         }
 
 
