@@ -21,6 +21,24 @@ namespace SeriesAnalyzer
             }
             return _listInputs;
         }
+        static void  displaySeriesReversed(List<int> inputSeries)
+        {
+            Console.WriteLine("The series in reverse order is: ");
+            for (int i = inputSeries.Count - 1; i >= 0; i--)
+            {
+                Console.WriteLine(inputSeries[i]);
+            }
+        }
+        static void displaySeries(List<int> inputSeries)
+        {
+            Console.WriteLine("The series is: ");
+            foreach (int i in inputSeries)
+            {
+                Console.WriteLine(i);
+            }
+            
+        }
+
         static List<int> clearNumberSeries(List<int> inputSeries)
         {
             inputSeries.Clear();
@@ -74,7 +92,7 @@ namespace SeriesAnalyzer
 
         static bool hasArguments(List<string> arguments)
         {
-            return arguments.Count > 0;
+            return arguments.Count > 2;
         }
 
 
