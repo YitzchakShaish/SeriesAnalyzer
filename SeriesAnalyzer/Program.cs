@@ -34,7 +34,8 @@ namespace SeriesAnalyzer
                     _listNumbers.Add(number);
                 else
                 {
-                    Console.WriteLine($"The argument '{str}' is not a valid number.");
+                    Console.WriteLine($"The value '{str}' is not a valid number.");
+
                 }
             }
             return _listNumbers;
