@@ -10,6 +10,17 @@ namespace SeriesAnalyzer
 {
     internal class Program
     {
+        static List<string> getUserInputs(int numberOfInputs)
+        {
+            List<string> _listInputs = new List<string>();
+            for (int i = 0; i < numberOfInputs; i++)
+            {
+                Console.WriteLine($"Enter your {i + 1} number: ");
+                string inputNum = Console.ReadLine();
+                _listInputs.Add(inputNum);
+            }
+            return _listInputs;
+        }
         static List<string> getArguments(string[] args)
         {
             List<string> _listArguments = new List<string>();
