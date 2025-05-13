@@ -75,6 +75,37 @@ namespace SeriesAnalyzer
             }
             Console.WriteLine(min);
         }
+        static void displaySeriesAverage(List<int> inputSeries)
+        {
+            Console.WriteLine("The average of the series is: ");
+            int sum = 0;
+            foreach (int i in inputSeries)
+            {
+                sum += i;
+            }
+            double average = (double)sum / inputSeries.Count;
+            Console.WriteLine(average);
+        }
+        static void displaySeriesCount(List<int> inputSeries)
+        {
+            Console.WriteLine("The count of the series is: ");
+            Console.WriteLine(inputSeries.Count);
+        }
+        static void displaySeriesSum(List<int> inputSeries)
+        {
+            Console.WriteLine("The sum of the series is: ");
+            int sum = 0;
+            foreach (int i in inputSeries)
+            {
+                sum += i;
+            }
+            Console.WriteLine(sum);
+        }
+        static void ExitProgram()
+        {
+            Console.WriteLine("God bay!! ");
+            Environment.Exit(0);
+        }
 
 
 
@@ -132,6 +163,21 @@ namespace SeriesAnalyzer
         static bool hasArguments(List<string> arguments)
         {
             return arguments.Count > 2;
+        }
+        static void displayMenu()
+        {
+            Console.WriteLine("Please choose one of the following options by entering the corresponding letter:");
+            Console.WriteLine("a. Enter a new series (replace the current one)");
+            Console.WriteLine("b. Display the series in the original order");
+            Console.WriteLine("c. Display the series in reverse order");
+            Console.WriteLine("d. Display the series sorted (ascending)");
+            Console.WriteLine("e. Display the maximum value in the series");
+            Console.WriteLine("f. Display the minimum value in the series");
+            Console.WriteLine("g. Display the average of the series");
+            Console.WriteLine("h. Display the number of elements in the series");
+            Console.WriteLine("i. Display the sum of the series");
+            Console.WriteLine("j. Exit the program");
+            Console.Write("Enter your choice (a–j): ");
         }
 
 
