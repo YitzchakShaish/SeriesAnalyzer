@@ -21,6 +21,11 @@ namespace SeriesAnalyzer
             }
             return _listInputs;
         }
+        static List<int> clearNumberSeries(List<int> inputSeries)
+        {
+            inputSeries.Clear();
+            return inputSeries;
+        }
         static List<string> getArguments(string[] args)
         {
             List<string> _listArguments = new List<string>();
@@ -50,6 +55,23 @@ namespace SeriesAnalyzer
             return _listNumbers;
             }
 
+        static List<int> verifyPositiveNumbers(List<int> listints)
+        {
+            List<int> _listPositiveNumbers = new List<int>();
+            foreach (int number in listints)
+            {
+                if (number > 0)
+                {
+                    _listPositiveNumbers.Add(number);
+                }
+                else
+                {
+                    Console.WriteLine($"The number '{number}' is not a positive number.");
+                }
+            }
+            return _listPositiveNumbers;
+        }
+
         static bool hasArguments(List<string> arguments)
         {
             return arguments.Count > 0;
@@ -61,6 +83,7 @@ namespace SeriesAnalyzer
         {
             getArguments(args);
             verifyingReceiptOfNumbers(getArguments(args));
+            verifyPositiveNumbers(verifyingReceiptOfNumbers(getArguments(args)));
 
 
         }
