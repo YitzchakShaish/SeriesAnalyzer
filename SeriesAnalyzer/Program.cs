@@ -21,35 +21,23 @@ namespace SeriesAnalyzer
             }
             return _listArguments;
         }
-        static List<int> verifyingReceiptOfNumbers(List<string> _listArguments)
-        {
-            if (!hasArguments(_listArguments))
-            {
-                Console.WriteLine("No arguments were received.");
-                return new List<int>();
-            }
-            else
-            {
-                Console.WriteLine("Arguments received.");
-
+        static List<int> verifyingReceiptOfNumbers(List<string> listring)
+        { 
                 List<int> _listNumbers = new List<int>();
-                foreach (string arg in _listArguments)
+                foreach (string str in listring)
                 {
-                    if (int.TryParse(arg, out int number))
+                    if (int.TryParse(str, out int number))
                     {
-                        int argNum = int.Parse(arg);
-                        _listNumbers.Add(argNum);
+                        int newint = int.Parse(str);
+                        _listNumbers.Add(newint);
                     }
                     else
                     {
-                        Console.WriteLine($"The argument {arg} is not a number.");
+                        Console.WriteLine($"The argument '{str}' is not a valid number.");
                     }
-                }
-
-                return _listNumbers;
-
             }
-        }
+            return _listNumbers;
+            }
 
         static bool hasArguments(List<string> arguments)
         {
