@@ -5,3 +5,10 @@ C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\SeriesAnalyzer\obj\Deb
 C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.exe
 C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.pdb
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.csproj.AssemblyReference.cache
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.exe
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\obj\Debug\SeriesAnalyzer.pdb
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\bin\Debug\SeriesAnalyzer.exe.config
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\bin\Debug\SeriesAnalyzer.exe
+C:\Users\LENOVO\projes\The Series Analyzer\SeriesAnalyzer\bin\Debug\SeriesAnalyzer.pdb
