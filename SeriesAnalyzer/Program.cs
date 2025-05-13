@@ -11,6 +11,7 @@ namespace SeriesAnalyzer
     internal class Program
     {
         //Functions for receiving a series of arguments or numbers from the user (including validation that positive numbers are received).
+        // Get the arguments from the command line
         static List<string> getArguments(string[] args)
         {
             List<string> _listArguments = new List<string>();
@@ -23,6 +24,7 @@ namespace SeriesAnalyzer
             return _listArguments;
         }
 
+        // Verify the receipt of numbers from the command line arguments
         static List<int> verifyingReceiptOfNumbers(List<string> listring)
         {
             List<int> _listNumbers = new List<int>();
@@ -38,6 +40,7 @@ namespace SeriesAnalyzer
             return _listNumbers;
         }
 
+        // Verify that the numbers are positive
         static List<int> verifyPositiveNumbers(List<int> listints)
         {
             List<int> _listPositiveNumbers = new List<int>();
@@ -55,6 +58,7 @@ namespace SeriesAnalyzer
             return _listPositiveNumbers;
         }
 
+        // Get user inputs with a stop option
         static List<string> getUserInputsWithStop(int numberOfInputs)
         {
             List<string> _listInputs = new List<string>();
@@ -85,7 +89,8 @@ namespace SeriesAnalyzer
             return _listInputs;
         }
 
-        ////Functions to display the series in different formats according to the user's choice in the menu
+        //Functions to display the series in different formats according to the user's choice in the menu
+        // Display the series in the original order
         static void displaySeries(List<int> inputSeries)
         {
             Console.WriteLine("The series is: ");
@@ -96,6 +101,7 @@ namespace SeriesAnalyzer
 
         }
 
+        // Display the series in reverse order
         static void  displaySeriesReversed(List<int> inputSeries)
         {
             Console.WriteLine("The series in reverse order is: ");
@@ -104,6 +110,7 @@ namespace SeriesAnalyzer
                 Console.WriteLine(inputSeries[i]);
             }
         }
+        // Display the series sorted in ascending order
         static void displaySeriesSorted(List<int> inputSeries)
         {
             Console.WriteLine("The series sorted is: ");
@@ -113,6 +120,7 @@ namespace SeriesAnalyzer
                 Console.WriteLine(i);
             }
         }
+        // Display the maximum value in the series
         static void displaySeriesMax(List<int> inputSeries)
         {
             Console.WriteLine("The maximum number in the series is: ");
@@ -126,6 +134,7 @@ namespace SeriesAnalyzer
             }
                    Console.WriteLine(max);
         }
+        // Display the minimum value in the series
         static void displaySeriesMin(List<int> inputSeries)
         {
             Console.WriteLine("The minimum number in the series is: ");
@@ -140,6 +149,7 @@ namespace SeriesAnalyzer
             }
             Console.WriteLine(min);
         }
+        // Display the average of the series
         static void displaySeriesAverage(List<int> inputSeries)
         {
             Console.WriteLine("The average of the series is: ");
@@ -151,11 +161,13 @@ namespace SeriesAnalyzer
             double average = (double)sum / inputSeries.Count;
             Console.WriteLine(average);
         }
+        // Display the number of elements in the series
         static void displaySeriesCount(List<int> inputSeries)
         {
             Console.WriteLine("The count of the series is: ");
             Console.WriteLine(inputSeries.Count);
         }
+        // Display the sum of the series
         static void displaySeriesSum(List<int> inputSeries)
         {
             Console.WriteLine("The sum of the series is: ");
@@ -166,6 +178,7 @@ namespace SeriesAnalyzer
             }
             Console.WriteLine(sum);
         }
+        // Display the exit message and exit the program
         static void ExitProgram()
         {
             Console.WriteLine("God bay!! ");
@@ -174,6 +187,7 @@ namespace SeriesAnalyzer
 
 
         //General functions for running the program
+        // Display the menu with options
         static void displayMenu()
         {
             Console.WriteLine("Please choose one of the following options by entering the corresponding letter:");
@@ -189,6 +203,7 @@ namespace SeriesAnalyzer
             Console.WriteLine("j. Exit the program");
             Console.Write("Enter your choice (a–j): ");
         }
+        // Validate the user's choice
         static char getValidatedMenuChoice()
         {
             char choice;
@@ -208,6 +223,7 @@ namespace SeriesAnalyzer
             }
             return choice;
         }
+        // Handle the user's choice and call the appropriate function
         static void HandleUserChoice(char choice,ref List<int> inputSeries)
         {
             switch (choice)
@@ -264,6 +280,7 @@ namespace SeriesAnalyzer
                     break;
             }
         }
+        // Main function to start the program
         static void startProgram(string[] args)
         {
             List<int> inputSeries = verifyPositiveNumbers(
