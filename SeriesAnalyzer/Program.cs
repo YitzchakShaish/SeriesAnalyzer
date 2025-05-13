@@ -10,25 +10,82 @@ namespace SeriesAnalyzer
 {
     internal class Program
     {
-        static List<string> getUserInputs(int numberOfInputs)
+        //Functions for receiving a series of arguments or numbers from the user (including validation that positive numbers are received).
+        static List<string> getArguments(string[] args)
+        {
+            List<string> _listArguments = new List<string>();
+            foreach (string arg in args)
+            {
+                Console.WriteLine(arg);
+                _listArguments.Add(arg);
+
+            }
+            return _listArguments;
+        }
+
+        static List<int> verifyingReceiptOfNumbers(List<string> listring)
+        {
+            List<int> _listNumbers = new List<int>();
+            foreach (string str in listring)
+            {
+                if (int.TryParse(str, out int number))
+                    _listNumbers.Add(number);
+                else
+                {
+                    Console.WriteLine($"The argument '{str}' is not a valid number.");
+                }
+            }
+            return _listNumbers;
+        }
+
+        static List<int> verifyPositiveNumbers(List<int> listints)
+        {
+            List<int> _listPositiveNumbers = new List<int>();
+            foreach (int number in listints)
+            {
+                if (number > 0)
+                {
+                    _listPositiveNumbers.Add(number);
+                }
+                else
+                {
+                    Console.WriteLine($"The number '{number}' is not a positive number.");
+                }
+            }
+            return _listPositiveNumbers;
+        }
+
+        static List<string> getUserInputsWithStop(int numberOfInputs)
         {
             List<string> _listInputs = new List<string>();
-            for (int i = 0; i < numberOfInputs; i++)
+            int i = 0;
+
+            while (true)
             {
                 Console.WriteLine($"Enter your {i + 1} number: ");
                 string inputNum = Console.ReadLine();
+
+                if (inputNum.ToLower() == "stop" && i >= numberOfInputs)
+                {
+                    Console.WriteLine("Input stopped by user.");
+                    break;
+                }
+
                 _listInputs.Add(inputNum);
+                i++;
+
+                if (i == numberOfInputs)
+                {
+                    Console.WriteLine("You have reached the minimum number of inputs.");
+                    Console.WriteLine("If you want to stop, type 'stop' next time.");
+                    Console.WriteLine("Otherwise, keep entering numbers.");
+                }
             }
+
             return _listInputs;
         }
-        static void  displaySeriesReversed(List<int> inputSeries)
-        {
-            Console.WriteLine("The series in reverse order is: ");
-            for (int i = inputSeries.Count - 1; i >= 0; i--)
-            {
-                Console.WriteLine(inputSeries[i]);
-            }
-        }
+
+        ////Functions to display the series in different formats according to the user's choice in the menu
         static void displaySeries(List<int> inputSeries)
         {
             Console.WriteLine("The series is: ");
@@ -36,7 +93,16 @@ namespace SeriesAnalyzer
             {
                 Console.WriteLine(i);
             }
-            
+
+        }
+
+        static void  displaySeriesReversed(List<int> inputSeries)
+        {
+            Console.WriteLine("The series in reverse order is: ");
+            for (int i = inputSeries.Count - 1; i >= 0; i--)
+            {
+                Console.WriteLine(inputSeries[i]);
+            }
         }
         static void displaySeriesSorted(List<int> inputSeries)
         {
@@ -60,7 +126,6 @@ namespace SeriesAnalyzer
             }
                    Console.WriteLine(max);
         }
-
         static void displaySeriesMin(List<int> inputSeries)
         {
             Console.WriteLine("The minimum number in the series is: ");
@@ -108,59 +173,7 @@ namespace SeriesAnalyzer
         }
 
 
-
-        static List<int> clearNumberSeries(List<int> inputSeries)
-        {
-            inputSeries.Clear();
-            return inputSeries;
-        }
-        static List<string> getArguments(string[] args)
-        {
-            List<string> _listArguments = new List<string>();
-            foreach (string arg in args)
-            {
-                Console.WriteLine(arg);
-                _listArguments.Add(arg);
-
-            }
-            return _listArguments;
-        }
-        static List<int> verifyingReceiptOfNumbers(List<string> listring)
-        { 
-                List<int> _listNumbers = new List<int>();
-                foreach (string str in listring)
-                {
-                    if (int.TryParse(str, out int number))
-                        _listNumbers.Add(number);
-                    else
-                    {
-                        Console.WriteLine($"The argument '{str}' is not a valid number.");
-                }
-            }
-            return _listNumbers;
-            }
-
-        static List<int> verifyPositiveNumbers(List<int> listints)
-        {
-            List<int> _listPositiveNumbers = new List<int>();
-            foreach (int number in listints)
-            {
-                if (number > 0)
-                {
-                    _listPositiveNumbers.Add(number);
-                }
-                else
-                {
-                    Console.WriteLine($"The number '{number}' is not a positive number.");
-                }
-            }
-            return _listPositiveNumbers;
-        }
-
-        static bool hasArguments(List<string> arguments)
-        {
-            return arguments.Count > 2;
-        }
+        //General functions for running the program
         static void displayMenu()
         {
             Console.WriteLine("Please choose one of the following options by entering the corresponding letter:");
@@ -202,7 +215,7 @@ namespace SeriesAnalyzer
                 case 'a':
                     while (true)
                     {
-                        inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputs(3)));
+                        inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputsWithStop(3)));
                         if (inputSeries.Count >= 3)
                             break;
                         else
@@ -256,16 +269,14 @@ namespace SeriesAnalyzer
             List<int> inputSeries = verifyPositiveNumbers(
      verifyingReceiptOfNumbers(
          getArguments(args)
-     )
- );
-
-
+            )
+                );
             if (inputSeries.Count < 3)
 
                 { 
                 while (true)
                     {
-                inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputs(3)));
+                inputSeries = verifyPositiveNumbers(verifyingReceiptOfNumbers(getUserInputsWithStop(3)));
                 if (inputSeries.Count >= 3)
 
                     break;
@@ -273,10 +284,6 @@ namespace SeriesAnalyzer
                     Console.WriteLine("No valid positive numbers were entered. Please try again.");
                         }
                 }
-
-
-
-
             while (true)
             {
                 displayMenu();
